@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)https://getbootstrap.com/docs/3.4/examples/signin/ -->
+<html lang="en"><link type="text/css" id="dark-mode" rel="stylesheet" href="https://getbootstrap.com/docs/3.4/examples/signin/"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="https://getbootstrap.com/docs/3.4/favicon.ico">
+    <link rel="canonical" href="https://getbootstrap.com/docs/3.4/examples/signin/">
+
+    <title>Signin Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="./css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="./css/signin.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="./js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <form class="form-signin">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <a class="form-control" href="Register.html">Create account</a>
+      </form>
+
+    </div> <!-- /container -->
+
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="./js/ie10-viewport-bug-workaround.js"></script>
+    <script src="./js/jquery-3.4.1.min.js"></script>
+  
+    <script type="text/javascript">
+        control = {
+            form_centered: function(inside) {
+                return `<form class="form-signin"> ${inside} </form>`;
+            },
+            input: function(type, name) {
+                return `<label for="input${util.confirize(name)}" class="sr-only">${name}</label>
+                <input type="${type}" id="input${util.confirize(name)}" class="form-control" placeholder="${name}" required="" autofocus="">`
+            },
+            checkbox: function(name, caption) {
+                return `<div class="checkbox">
+                          <label>
+                            <input type="checkbox" value="${util.confirize(name)}"> ${caption}
+                          </label>
+                        </div>`;
+            },
+            button: function(caption, funcion) {
+                return `<button class="btn btn-lg btn-primary btn-block" type="button" onclick="${funcion}">${caption}</button>`;
+            },
+            buttonText: function(caption, link) {
+                return `<a class="form-control" href="${link}">${caption}</a>`
+            },
+            heading2: function(caption) {
+                return `<h2 class="form-signin-heading">${caption}</h2>`;
+            }
+        };
+        util = {
+            capitalize: function(text) {
+
+            },
+            confirize: function(text) {
+                text = text.replace(/ /g, "_")
+                return text.toLowerCase();
+            }
+        };
+        main = {
+            log_in: function() {
+                $(".container").html(control.form_centered(control.heading2("Log-in")+
+                                control.input("text", "Username")+
+                                control.input("password", "Password")+
+                                control.button("Log In", "transfer('hola gml')")+
+                                control.buttonText("Create Account", "javascript:main.create_account()")+
+                                control.buttonText("Forgot password", "javascript:main.forgot_password()")))
+
+            },
+            create_account: function() {
+                $(".container").html(control.form_centered(control.heading2("Create account")+
+                                control.input("text", "Username")+
+                                control.input("email", "Valid Email")+
+                                control.input("password", "Password")+
+                                control.input("password", "Re-Password")+
+                                control.checkbox("agreement", "I agree TOS and Privacy Policy")+
+                                control.button("Create", "alert('done!')")+
+                                control.button("Cancel", "main.log_in()")))
+            },
+            forgot_password: function() {
+                $(".container").html(control.form_centered(control.heading2("Recover password")+
+                                control.input("email", "Email")+
+                                control.button("Recover", "alert('done!')")+
+                                control.button("Cancel","main.log_in()")))
+            }
+
+        }
+
+        $(document).ready(function(){
+            main.log_in();
+        })
+    </script>
+
+</body></html>
